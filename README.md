@@ -6,28 +6,36 @@ This is the code and data for the experiments in ["Part-of-Speech Tagging for Co
   
 ## Download pre-trained word embeddings
 Clone the [indic-word2vec-embeddings] repository (https://bitbucket.org/kelseyball/indic-word2vec-embeddings/src/master/) into the data/raw directory.
-```git clone https://kelseyball@bitbucket.org/kelseyball/indic-word2vec-embeddings.git data/raw/
+```
+git clone https://kelseyball@bitbucket.org/kelseyball/indic-word2vec-embeddings.git data/raw/
 ```
   
 ## Data prep
-`python prep.py`
+```
+python prep.py
+```
 This script pre-transliterates the Hindi training data and word embeddings into Latin. The generated files are placed in the data/clean directory and used for the baseline experiment.
 
 ## Experiments
 The baseline and experimental models are in the baseline.py and our-model.py files, respectively. The experiments listed below and results are described in greater detail in our paper.
 
 - Baseline
-```python baseline.py --htrain data/clean/hi_roman-ud-train.conllu  --etrain data/raw/en-ud-train.conllu --cdev data/clean/TWEETS-dev-v2-unsup-dist.conll --hi-embds data/clean/Hindi_roman.vec --en-embds data/raw/indic-word2vec-embeddings/English.vec --hi-limit 50000 --en-limit 50000 --iter 20
+```
+python baseline.py --htrain data/clean/hi_roman-ud-train.conllu  --etrain data/raw/en-ud-train.conllu --cdev data/clean/TWEETS-dev-v2-unsup-dist.conll --hi-embds data/clean/Hindi_roman.vec --en-embds data/raw/indic-word2vec-embeddings/English.vec --hi-limit 50000 --en-limit 50000 --iter 20
 ```
 - Our model (multi-lingual)
-```python our-model.py --htrain data/raw/hi-ud-train.conllu  --etrain data/raw/en-ud-train.conllu --cdev data/clean/TWEETS-dev-v2-unsup-dist.conll --hi-embds data/raw/indic-word2vec-embeddings/Hindi_utf.vec --en-embds data/raw/indic-word2vec-embeddings/English.vec --hi-limit 50000 --en-limit 50000 --iter 20
+```
+python our-model.py --htrain data/raw/hi-ud-train.conllu  --etrain data/raw/en-ud-train.conllu --cdev data/clean/TWEETS-dev-v2-unsup-dist.conll --hi-embds data/raw/indic-word2vec-embeddings/Hindi_utf.vec --en-embds data/raw/indic-word2vec-embeddings/English.vec --hi-limit 50000 --en-limit 50000 --iter 20
 ```
 - Our model (forced language choice)
-```python our-model.py --htrain data/raw/hi-ud-train.conllu  --etrain data/raw/en-ud-train.conllu --cdev data/clean/TWEETS-dev-v2-unsup-dist.conll --hi-embds data/raw/indic-word2vec-embeddings/Hindi_utf.vec  --en-embds data/raw/indic-word2vec-embeddings/English.vec --hi-limit 50000 --en-limit 50000 --iter 20 --use-ltags
+```
+python our-model.py --htrain data/raw/hi-ud-train.conllu  --etrain data/raw/en-ud-train.conllu --cdev data/clean/TWEETS-dev-v2-unsup-dist.conll --hi-embds data/raw/indic-word2vec-embeddings/Hindi_utf.vec  --en-embds data/raw/indic-word2vec-embeddings/English.vec --hi-limit 50000 --en-limit 50000 --iter 20 --use-ltags
 ```
 - Our model (languages weighted by HMM)
-```python our-model.py --htrain data/raw/hi-ud-train.conllu --etrain data/raw/en-ud-train.conllu --cdev data/clean/TWEETS-dev-v2-unsup-dist.conll --hi-embds data/raw/indic-word2vec-embeddings/Hindi_utf.vec  --en-embds data/raw/indic-word2vec-embeddings/English.vec --hi-limit 50000 --en-limit 50000 --iter 20
+```
+python our-model.py --htrain data/raw/hi-ud-train.conllu --etrain data/raw/en-ud-train.conllu --cdev data/clean/TWEETS-dev-v2-unsup-dist.conll --hi-embds data/raw/indic-word2vec-embeddings/Hindi_utf.vec  --en-embds data/raw/indic-word2vec-embeddings/English.vec --hi-limit 50000 --en-limit 50000 --iter 20
 ```
 - Our model (oracle language choice)
-```python our-model.py --htrain data/raw/hi-ud-train.conllu  --etrain data/raw/en-ud-train.conllu --cdev data/raw/TWEETS-dev-v2.conll --hi-embds data/raw/indic-word2vec-embeddings/Hindi_utf.vec  --en-embds data/raw/indic-word2vec-embeddings/English.vec --hi-limit 50000 --en-limit 50000 --iter 20 --use-ltags
+```
+python our-model.py --htrain data/raw/hi-ud-train.conllu  --etrain data/raw/en-ud-train.conllu --cdev data/raw/TWEETS-dev-v2.conll --hi-embds data/raw/indic-word2vec-embeddings/Hindi_utf.vec  --en-embds data/raw/indic-word2vec-embeddings/English.vec --hi-limit 50000 --en-limit 50000 --iter 20 --use-ltags
 ```
