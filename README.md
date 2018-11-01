@@ -5,7 +5,7 @@ This is the code and data for the experiments in ["Part-of-Speech Tagging for Co
   - [indictrans transliteration module](https://github.com/libindic/indic-trans)
   
 ## Download pre-trained word embeddings
-Clone the [indic-word2vec-embeddings] repository (https://bitbucket.org/kelseyball/indic-word2vec-embeddings/src/master/) into the data/raw directory.
+Clone the [indic-word2vec-embeddings](https://bitbucket.org/kelseyball/indic-word2vec-embeddings/src/master/) repository into the data/raw directory.
 ```
 git clone https://kelseyball@bitbucket.org/kelseyball/indic-word2vec-embeddings.git data/raw/
 ```
